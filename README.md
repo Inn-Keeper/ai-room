@@ -16,23 +16,23 @@ install.sh   puts the above where each tool looks for it
 ## Use in a project
 
 ```bash
-git clone https://github.com/Inn-Keeper/ai-room ~/ai-room
+git clone https://github.com/Inn-Keeper/ai-room ~/projects/ai-room
 
 # everything
-~/ai-room/install.sh --project .
+~/projects/ai-room/install.sh --project .
 
 # or only what the project needs
-~/ai-room/install.sh --project . there-we-go x-ray real-user
+~/projects/ai-room/install.sh --project . there-we-go x-ray real-user
 ```
 
 Skills are copied to `.claude/skills/` and `.agents/skills/`, and agents to
 `.claude/agents/` and `.codex/agents/`. Commit them with the project so
-collaborators and CI get them too. To update, `git pull` in `~/ai-room` and rerun.
+collaborators and CI get them too. To update, `git pull` in `~/projects/ai-room` and rerun.
 
 ## Use machine-wide
 
 ```bash
-~/ai-room/install.sh
+~/projects/ai-room/install.sh
 ```
 
 This symlinks every skill, agent, and instruction file into `~/.claude` and
