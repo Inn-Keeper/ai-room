@@ -138,7 +138,7 @@ clause, renamed constant, type guard, pattern). If two approaches fit, name
 both with the tradeoff in a sentence each.
 ```
 
-## Summary
+### Summary
 
 Close with one sentence each:
 
