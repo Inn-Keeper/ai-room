@@ -12,7 +12,14 @@ description: >
 
 Validate Core Web Vitals and point at what to fix. Never present lab numbers as a real-user pass.
 
-## Thresholds (75th percentile of page loads)
+## Scope
+
+- One or more URLs. Ask for them if missing; do not crawl a whole site.
+- Local URLs (localhost, dev servers) get lab data only. Prefer a production build; say so when the target is a dev server, since dev builds are slower.
+
+## Checks
+
+### Thresholds (75th percentile of page loads)
 
 | Metric | Good | Needs improvement | Poor |
 |---|---|---|---|
@@ -22,12 +29,7 @@ Validate Core Web Vitals and point at what to fix. Never present lab numbers as 
 
 A page passes only when all three are Good in field data.
 
-## Inputs
-
-- One or more URLs. Ask for them if missing; do not crawl a whole site.
-- Local URLs (localhost, dev servers) get lab data only. Prefer a production build; say so when the target is a dev server, since dev builds are slower.
-
-## 1. Lab data (any URL)
+### 1. Lab data (any URL)
 
 Run Lighthouse three times per URL with the default mobile profile and use the median:
 
@@ -44,7 +46,7 @@ Write reports to a temp directory, not the project. From each JSON read:
 
 Needs Chrome and Node ≥ 22.19. If either is missing, report Blocked; do not install anything without asking.
 
-## 2. Field data (public URLs only)
+### 2. Field data (public URLs only)
 
 Query the PageSpeed Insights API, which includes CrUX data from real Chrome users over the last 28 days:
 
@@ -75,3 +77,10 @@ Fixes (highest impact first):
 - Tie each fix to the element or resource Lighthouse named; in a codebase, locate the file that renders it.
 - When lab and field disagree, trust field for the verdict and explain the gap (device, cache, real interactions).
 - Limits: say which URLs, which device profile, and what was not measured.
+
+## Rules
+
+- Never present lab numbers as a real-user pass; field data decides the verdict.
+- Never estimate missing field data.
+- Never print, log, or commit `PSI_API_KEY`.
+- Don't install anything without asking. Report only; never edit code.

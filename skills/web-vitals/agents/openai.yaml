@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Vitals"
+  short_description: "Validate LCP, INP, and CLS with lab and field data"
+  default_prompt: "Use $web-vitals to measure Core Web Vitals for these URLs and report pass/fail with the elements to fix."
