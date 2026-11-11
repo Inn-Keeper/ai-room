@@ -74,6 +74,8 @@ Nothing is deleted.
 | `design-final-touches` | Final visual and accessibility polish before release |
 | `evaluate-product` | Senior-PM review of user journeys, flow, and feel |
 | `press-pitch-review` | Music publicist review of press releases, EPKs, and band bios |
+| `get-seo-right` | Technical and on-page SEO audit: crawl, index, metadata, rendering, structured data, links |
+| `web-vitals` | Measure Core Web Vitals (LCP, INP, CLS) with Lighthouse lab runs and real-user CrUX data |
 
 ## Agents
 
