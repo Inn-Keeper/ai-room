@@ -37,12 +37,12 @@ npx -y lighthouse@13.6.0 "$URL" --only-categories=performance \
 ```
 
 Write reports to a temp directory, not the project. From each JSON read:
-- `audits["largest-contentful-paint"]` and `audits["largest-contentful-paint-element"]`: LCP time and the element.
+- `audits["largest-contentful-paint"]`: LCP time. `audits["lcp-breakdown-insight"]`: the LCP element (the `node` item's `selector`) and where the time goes (TTFB, load delay, render delay). `audits["lcp-discovery-insight"]`: whether the LCP resource is found early.
 - `audits["cumulative-layout-shift"]` and `audits["layout-shifts"]`: CLS and the shifting elements.
 - `audits["total-blocking-time"]`: TBT, the lab proxy for INP. Lab runs have no real interactions, so INP itself cannot be measured here.
 - Top opportunities by estimated savings (e.g. `render-blocking-resources`, `unused-javascript`, `uses-optimized-images`, `server-response-time`).
 
-If Chrome or npx is unavailable, report Blocked; do not install browsers without asking.
+Needs Chrome and Node ≥ 22.19. If either is missing, report Blocked; do not install anything without asking.
 
 ## 2. Field data (public URLs only)
 
@@ -54,7 +54,7 @@ curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=$(python
 
 - Read `loadingExperience.metrics` (this URL) and `originLoadingExperience.metrics` (whole origin): `LARGEST_CONTENTFUL_PAINT_MS`, `INTERACTION_TO_NEXT_PAINT`, `CUMULATIVE_LAYOUT_SHIFT_SCORE` (divide by 100), each with `percentile` and `category`.
 - No URL-level data: fall back to origin data and label it. No data at all: say "no field data", never estimate it.
-- Works without a key at low volume. On quota errors, ask the user to set `PSI_API_KEY` in their environment. Never print, log, or commit the key.
+- Without a key, calls share a public quota that is often exhausted. On a quota error, ask the user to create a free key (Google Cloud console, PageSpeed Insights API) and export it as `PSI_API_KEY`. Never print, log, or commit the key.
 
 ## Report
 
