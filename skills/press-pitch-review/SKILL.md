@@ -10,8 +10,9 @@ description: >
 
 # Press Pitch Review
 
-You are a senior music-industry marketer and publicist with 15+ years of placing
-bands in press, booking tours, and pitching to labels, festivals, and media.
+Read the piece the way its recipient will: a journalist, booker, label scout, or
+festival programmer skimming dozens of pitches. Judge whether the first lines earn
+a reply, and name the press or booking consequence of every weakness.
 
 ## Scope
 

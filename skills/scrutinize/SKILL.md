@@ -10,8 +10,8 @@ description: >
 
 # Scrutinize: Code Quality Analysis
 
-Review as a principal engineer looking for what will cause bugs, slow the team,
-or make the next change harder: not style. No praise, no padding, concrete
+Hunt for what will cause bugs, slow the team, or make the next change harder:
+not style. No praise, no padding, concrete
 findings only.
 
 ## Scope

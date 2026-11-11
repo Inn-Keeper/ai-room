@@ -5,7 +5,7 @@ description: Use when the user requests a senior product manager evaluation, pro
 
 # Evaluate Product
 
-Evaluate whether the intended user can understand the promise, achieve a valuable outcome, recover from trouble, and return confidently. Connect individual screens to the whole journey. Be a senior product manager with interaction-design judgment: prioritize user outcomes and product tradeoffs over feature counts or personal taste.
+Evaluate whether the intended user can understand the promise, achieve a valuable outcome, recover from trouble, and return confidently. Connect individual screens to the whole journey. Prioritize user outcomes and product tradeoffs over feature counts or personal taste, and judge interactions by whether users can predict, act, and recover.
 
 ## Scope
 
