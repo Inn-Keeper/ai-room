@@ -5,9 +5,9 @@ instructions, and the plugins I rely on. It is set up once and reused in any pro
 
 ## Layout
 
-```
-skills/      one folder per skill (SKILL.md); the same files serve Claude and Codex
-agents/      custom subagents, as real-user.md (Claude) and real-user.toml (Codex)
+```text
+skills/      one folder per skill: SKILL.md (Claude and Codex) + agents/openai.yaml (Codex app metadata)
+agents/      custom subagents, each as <name>.md (Claude) and <name>.toml (Codex)
 claude/      global CLAUDE.md, RTK.md, and a portable settings.json (hooks + plugins)
 codex/       global AGENTS.md, RTK.md, and a portable config.toml (plugins + Playwright MCP)
 install.sh   puts the above where each tool looks for it
@@ -47,6 +47,8 @@ curl -fsSL --create-dirs -o .agents/skills/x-ray/SKILL.md \
 Swap `x-ray` for any skill in the table below. Or copy and paste by hand: open
 `skills/<name>/SKILL.md` on GitHub, click **Raw**, and save it as
 `.claude/skills/<name>/SKILL.md` (Codex: `.agents/skills/<name>/SKILL.md`).
+The skill works from `SKILL.md` alone; `agents/openai.yaml` only adds a display
+name and default prompt in the Codex app.
 
 ## Use machine-wide
 
@@ -72,10 +74,21 @@ Nothing is deleted.
 | `scrutinize` | Code quality review: structure, complexity, coupling, testability |
 | `get-styled` | CSS architecture, responsive, and cross-browser audit |
 | `design-final-touches` | Final visual and accessibility polish before release |
-| `evaluate-product` | Senior-PM review of user journeys, flow, and feel |
-| `press-pitch-review` | Music publicist review of press releases, EPKs, and band bios |
+| `evaluate-product` | Product review of user journeys, flow, and feel |
+| `press-pitch-review` | Review of press releases, EPKs, and band bios as a journalist or booker reads them |
 | `get-seo-right` | Technical and on-page SEO audit: crawl, index, metadata, rendering, structured data, links |
 | `web-vitals` | Measure Core Web Vitals (LCP, INP, CLS) with Lighthouse lab runs and real-user CrUX data |
+
+`web-vitals` needs Chrome and Node 22.19 or newer. Real-user data comes from the
+PageSpeed Insights API; its keyless quota is shared and often exhausted, so export
+a free key as `PSI_API_KEY` (never commit it).
+
+### Writing a skill
+
+Every skill follows the pattern in [skills/README.md](skills/README.md):
+`Scope`, `Steps` or `Checks`, `Report`, and `Rules`, plus the Codex `agents/openai.yaml`.
+Describe behavior, not identity: "judge every change by what it can break" steers
+the model; "you are a senior architect" barely does.
 
 ## Agents
 
@@ -88,6 +101,9 @@ Nothing is deleted.
 it is the `playwright` MCP server in `codex/config.toml`, which is the official
 `@playwright/mcp` with a pinned version, runs locally over stdio, and uses an
 isolated browser profile.
+
+`product-manager` reads `docs/`, where superpowers writes its specs and plans. With
+no docs it says so and points you to brainstorming instead of inventing requirements.
 
 ## Third-party plugins and tools
 
