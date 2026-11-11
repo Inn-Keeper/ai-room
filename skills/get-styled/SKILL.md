@@ -12,7 +12,7 @@ strategy. Discover its conventions and supported platforms from the current
 project; do not carry over names, commands, tools, measurements or constraints
 from a previous audit. Preserve the existing product and interaction model.
 
-## Scope and workflow
+## Scope
 
 1. Establish whether the request is a review, report/action plan, or implementation.
    Reviews are read-only. A request for a report or skill does not authorize fixes.
@@ -33,7 +33,9 @@ from a previous audit. Preserve the existing product and interaction model.
    concerns, preferences and optional improvements. For authorized fixes,
    reproduce first, make the smallest repair, then run appropriate checks.
 
-## Architecture and maintainability principles
+## Checks
+
+### Architecture and maintainability principles
 
 - **CSS variables:** Use native custom properties for shared semantic colors,
   spacing and fonts so global changes have one source. Keep unique component
@@ -53,7 +55,7 @@ from a previous audit. Preserve the existing product and interaction model.
   such as visually hidden headings to its intended component. Do not make every
   semantic element undo a global component-specific default.
 
-## Selectors and specificity principles
+### Selectors and specificity principles
 
 - Use single component classes where possible; attach state through modifiers,
   attributes or pseudo-classes. Inspect descendant chains, child combinators,
@@ -72,7 +74,7 @@ from a previous audit. Preserve the existing product and interaction model.
   pressed/disabled states, portals, optional screens and previews may not appear
   in an initial DOM snapshot.
 
-## Layout, responsiveness and adaptation principles
+### Layout, responsiveness and adaptation principles
 
 - Use **Flexbox** for one-dimensional UI layout and **Grid** for two-dimensional
   interfaces. Absolute positioning remains appropriate for overlays, anchored
@@ -104,7 +106,7 @@ from a previous audit. Preserve the existing product and interaction model.
 - Do not mask layout defects using `overflow-x: hidden`, whole-page scaling,
   reduced font size or undersized controls.
 
-## Cross-browser verification
+### Cross-browser verification
 
 Derive the browser and device matrix from the project’s supported platforms,
 audience and available automation. For broad web compatibility, exercise
@@ -145,7 +147,7 @@ Include rotation, safe areas and native webviews only when the product uses them
   distinctly. Preserve completed checks; never present unavailable engines as
   passing or install new production dependencies to bypass the limitation.
 
-## Performance and quality principles
+### Performance and quality principles
 
 - **Minification:** Verify the production bundler emits compressed CSS. Measure
   output and gzip sizes. Keep an existing working pipeline; do not add cssnano
@@ -164,7 +166,26 @@ Include rotation, safe areas and native webviews only when the product uses them
 - Distinguish CSS payload from image, JavaScript, rendering and application-work costs.
   Build success, selector counts and screenshots do not establish frame rate.
 
-## Reporting and action plans
+### Example: specificity defeats reduced motion
+
+```css
+/* The three-class animation outranks this two-class disabling rule. */
+.notification .notification__message.is-entering {
+  animation: enter 500ms both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .notification .notification__message {
+    animation: none;
+  }
+}
+```
+
+Reproduce with reduced motion and inspect computed `animation-name` on the real
+entry flow. Gate the animation under `no-preference` or match its specificity.
+If a different animation is gated in JavaScript, exercise that real transition;
+manually adding its class does not prove the user flow ignores reduced motion.
+
+## Report
 
 For a full audit, deliver:
 
@@ -189,21 +210,10 @@ available. Do not automatically modify historical reports or commit changes.
 For a small implementation request, scale the report down to what changed, why,
 verification and material limitations; do not run a project-wide audit by default.
 
-## Example: specificity defeats reduced motion
+## Rules
 
-```css
-/* The three-class animation outranks this two-class disabling rule. */
-.notification .notification__message.is-entering {
-  animation: enter 500ms both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .notification .notification__message {
-    animation: none;
-  }
-}
-```
-
-Reproduce with reduced motion and inspect computed `animation-name` on the real
-entry flow. Gate the animation under `no-preference` or match its specificity.
-If a different animation is gated in JavaScript, exercise that real transition;
-manually adding its class does not prove the user flow ignores reduced motion.
+- Reviews are read-only. A request for a report or skill does not authorize fixes.
+- Discover conventions and supported platforms from the current project; do not
+  carry over names, commands, tools, measurements or constraints from a previous audit.
+- Report observed defects separately from compatibility risks, maintainability
+  concerns, preferences and optional improvements.
