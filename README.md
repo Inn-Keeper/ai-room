@@ -61,6 +61,7 @@ Nothing is deleted.
 | Agent | What it does |
 |---|---|
 | `real-user` | Walks through your running app as a persona and reports usability friction. It only reports and never edits code. |
+| `product-manager` | Knows the project's requirements and value from `docs/` (superpowers specs and plans). Decides what to build, checks work against requirements, and writes acceptance criteria. Read-only. |
 
 `real-user` needs a browser tool. On Claude, that is the Playwright plugin. On Codex,
 it is the `playwright` MCP server in `codex/config.toml`, which is the official
