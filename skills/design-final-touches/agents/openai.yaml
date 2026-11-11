@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Final Touches"
+  short_description: "Final visual and accessibility polish before release"
+  default_prompt: "Use $design-final-touches to run a final visual and accessibility polish pass on this project, following its existing conventions."
