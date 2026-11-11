@@ -29,6 +29,22 @@ Skills are copied to `.claude/skills/` and `.agents/skills/`, and agents to
 `.claude/agents/` and `.codex/agents/`. Commit them with the project so
 collaborators and CI get them too. To update, `git pull` in `~/projects/ai-room` and rerun.
 
+## Copy skills by hand
+
+No install script needed. Each skill is one folder with a `SKILL.md`; copy the
+folder into the project (or into `~/.claude/skills/` and `~/.agents/skills/` for every project):
+
+```bash
+# Claude Code
+mkdir -p .claude/skills && cp -R ~/projects/ai-room/skills/x-ray .claude/skills/
+
+# Codex
+mkdir -p .agents/skills && cp -R ~/projects/ai-room/skills/x-ray .agents/skills/
+```
+
+Or create `.claude/skills/x-ray/SKILL.md` (Codex: `.agents/skills/x-ray/SKILL.md`)
+and paste in the contents of `skills/x-ray/SKILL.md` from GitHub.
+
 ## Use machine-wide
 
 ```bash
