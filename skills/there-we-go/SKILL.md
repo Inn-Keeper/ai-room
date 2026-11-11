@@ -13,10 +13,14 @@ description: >
 Read the demand carefully, including the description and any attached images.
 Understand exactly what is asked. Nothing more.
 
+## Scope
+
 Run the analysis (steps 1–3) by default. Skip straight to step 4 only if the user
 explicitly waives the analysis.
 
-## Step 1: Understand the demand
+## Steps
+
+### Step 1: Understand the demand
 
 In your own words:
 
@@ -26,7 +30,7 @@ In your own words:
 
 If the ticket is too vague to plan safely, say what is missing and ask. Do not proceed.
 
-## Step 2: Identify what changes
+### Step 2: Identify what changes
 
 List only what must change to satisfy the demand:
 
@@ -37,7 +41,7 @@ List only what must change to satisfy the demand:
 Read the codebase to answer this. If you cannot access it, name what you need and ask.
 Never fabricate file names or APIs.
 
-## Step 3: Implementation plan
+### Step 3: Implementation plan
 
 Ordered, atomic steps, scoped tightly to the demand:
 
@@ -50,7 +54,7 @@ Step 1: <title>
 End with: **"Does this look right? I'll start once you confirm."**
 Write no code until the user agrees.
 
-## Step 4: Implement
+### Step 4: Implement
 
 Execute the steps in order.
 
@@ -59,9 +63,18 @@ Execute the steps in order.
 - **Surprises:** if something unexpected comes up, stop, describe it, and ask before continuing.
 - After each step, briefly state what changed and what is next.
 
-## Step 5: Verify
+### Step 5: Verify
 
 Run the project's tests, type check, or build, whichever exist. Report the real result.
 If nothing can be run, say so.
 
+## Report
+
 Finish with: files changed, verification result, and "All steps complete."
+
+## Rules
+
+- Write no code until the user agrees to the plan (unless the analysis was waived).
+- Strict scope: only what the plan says.
+- Never fabricate file names or APIs.
+- If something unexpected comes up, stop and ask.

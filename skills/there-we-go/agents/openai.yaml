@@ -1,0 +1,4 @@
+interface:
+  display_name: "There We Go"
+  short_description: "Ticket to agreed plan to scoped implementation"
+  default_prompt: "Use $there-we-go to analyze this ticket, agree on a plan with me, then implement exactly that and verify it."
