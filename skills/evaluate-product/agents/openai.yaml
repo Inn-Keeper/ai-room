@@ -1,0 +1,4 @@
+interface:
+  display_name: "Senior Product Evaluation"
+  short_description: "Review user journeys, intuition, flow, and feel"
+  default_prompt: "Use $evaluate-product to thoroughly evaluate this product as a senior product manager, focusing on user journeys, intuitiveness, flow, and feel, with evidence and prioritized recommendations."

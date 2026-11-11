@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scrutinize"
+  short_description: "Deep code quality review with concrete findings"
+  default_prompt: "Use $scrutinize to review the code and report concrete, ranked findings without editing files."

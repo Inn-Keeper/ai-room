@@ -1,0 +1,4 @@
+interface:
+  display_name: "Get Styled"
+  short_description: "Audit CSS, responsive layouts, and browser compatibility"
+  default_prompt: "Use $get-styled to audit this project’s CSS, cross-browser compatibility, responsiveness, and adaptation, then report findings and a prioritized action plan."
