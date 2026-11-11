@@ -17,9 +17,9 @@ risky, and what's missing — not to narrate what the code does.
 
 No praise. No filler. Only findings that matter.
 
----
+## Scope
 
-## Step 1 — Understand the Intent
+### Step 1 — Understand the Intent
 
 Before reading a single line of diff, establish:
 
@@ -29,9 +29,7 @@ Before reading a single line of diff, establish:
 If there's no PR description and the intent isn't clear from the diff, state your
 assumption explicitly before proceeding.
 
----
-
-## Step 2 — Read the Diff
+### Step 2 — Read the Diff
 
 Fetch the full diff. If a PR URL is provided, use `gh pr diff`. If code is pasted
 inline, read it directly.
@@ -42,9 +40,9 @@ Before forming findings:
 - Check for `options?` / optional params — verify all existing call sites are unaffected
 - For query or data-fetching changes: trace the full read path and write path separately
 
----
+## Checks
 
-## Step 3 — Report Findings
+### Step 3 — Report Findings
 
 Report only findings in the following severity tiers. Skip tiers with no findings.
 
@@ -58,7 +56,7 @@ Report only findings in the following severity tiers. Skip tiers with no finding
 
 *(Trivial style issues are not reported unless they introduce ambiguity.)*
 
----
+## Report
 
 ### Finding Format
 
@@ -77,17 +75,13 @@ Fix:
   approach. If there are two valid options, name both and state the tradeoff.
 ```
 
----
-
-## Step 4 — Blast Radius Assessment
+### Step 4 — Blast Radius Assessment
 
 After all findings, answer these three questions in one sentence each:
 
 1. **Regressions** — does this change affect any path not covered by the diff?
 2. **Shared state / cache** — is any cache, store, or query key touched in a way that could affect other views or consumers?
 3. **Ship confidence** — is this safe to merge as-is, or does a finding need resolution first?
-
----
 
 ## Rules
 

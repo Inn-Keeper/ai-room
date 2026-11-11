@@ -1,0 +1,4 @@
+interface:
+  display_name: "X-Ray"
+  short_description: "Correctness review of a diff or PR"
+  default_prompt: "Use $x-ray to review this diff or PR for correctness, regressions, and blast radius, reporting findings with file, line, severity, and fix."
