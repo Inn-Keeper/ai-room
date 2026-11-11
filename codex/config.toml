@@ -1,0 +1,18 @@
+# Portable subset of ~/.codex/config.toml. Merge by hand; machine-specific
+# entries (trusted projects, bundled marketplaces, app MCP env) stay local.
+
+[marketplaces.ponytail]
+source_type = "git"
+source = "https://github.com/DietrichGebert/ponytail.git"
+
+[plugins."ponytail@ponytail"]
+enabled = true
+
+[features]
+memories = true
+
+# Browser automation for the real-user agent. Official Microsoft package,
+# pinned version, local stdio only, throwaway browser profile.
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@0.0.85", "--isolated"]
