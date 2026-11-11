@@ -1,0 +1,4 @@
+interface:
+  display_name: "Get SEO Right"
+  short_description: "Technical and on-page SEO audit"
+  default_prompt: "Use $get-seo-right to audit this site or codebase for SEO issues, citing a file or URL for every finding."

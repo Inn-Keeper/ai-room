@@ -83,3 +83,9 @@ Not checked: <what's out of scope or needs tools/access>
 - Rank by impact: indexation over metadata over polish.
 - No overall score; a single number hides what matters. Counts per section are fine.
 - Label anything not verified directly as a hypothesis.
+
+## Rules
+
+- Every finding cites a `file:line` or URL and what was observed.
+- Never guess at rankings or invent search volumes; label unverified claims as hypotheses.
+- Report only; never edit code.
