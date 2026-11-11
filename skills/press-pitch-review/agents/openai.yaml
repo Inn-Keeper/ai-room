@@ -1,0 +1,4 @@
+interface:
+  display_name: "Press Pitch Review"
+  short_description: "Publicist review of press releases, EPKs, and bios"
+  default_prompt: "Use $press-pitch-review to review this promo copy as a senior music publicist and return ranked, concrete fixes."
