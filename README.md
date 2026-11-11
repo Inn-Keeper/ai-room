@@ -31,19 +31,22 @@ collaborators and CI get them too. To update, `git pull` in `~/projects/ai-room`
 
 ## Copy skills by hand
 
-No install script needed. Each skill is one folder with a `SKILL.md`; copy the
-folder into the project (or into `~/.claude/skills/` and `~/.agents/skills/` for every project):
+No clone needed. Each skill is a single `SKILL.md`; download it into the project
+(or into `~/.claude/skills/` and `~/.agents/skills/` for every project):
 
 ```bash
 # Claude Code
-mkdir -p .claude/skills && cp -R ~/projects/ai-room/skills/x-ray .claude/skills/
+curl -fsSL --create-dirs -o .claude/skills/x-ray/SKILL.md \
+  https://raw.githubusercontent.com/Inn-Keeper/ai-room/main/skills/x-ray/SKILL.md
 
 # Codex
-mkdir -p .agents/skills && cp -R ~/projects/ai-room/skills/x-ray .agents/skills/
+curl -fsSL --create-dirs -o .agents/skills/x-ray/SKILL.md \
+  https://raw.githubusercontent.com/Inn-Keeper/ai-room/main/skills/x-ray/SKILL.md
 ```
 
-Or create `.claude/skills/x-ray/SKILL.md` (Codex: `.agents/skills/x-ray/SKILL.md`)
-and paste in the contents of `skills/x-ray/SKILL.md` from GitHub.
+Swap `x-ray` for any skill in the table below. Or copy and paste by hand: open
+`skills/<name>/SKILL.md` on GitHub, click **Raw**, and save it as
+`.claude/skills/<name>/SKILL.md` (Codex: `.agents/skills/<name>/SKILL.md`).
 
 ## Use machine-wide
 
