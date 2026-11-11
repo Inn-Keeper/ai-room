@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architect"
+  short_description: "Design a system before coding: options and roadmap"
+  default_prompt: "Use $architect to design this system or feature: requirements, options with a recommendation, and a phased roadmap, without writing code."
