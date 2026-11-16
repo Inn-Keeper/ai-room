@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Usage:
-#   ./install.sh                         symlink everything into ~/.claude and ~/.codex
+#   ./install.sh                         symlink everything into ~/.claude, ~/.agents and ~/.codex
 #   ./install.sh --project DIR [NAME...] copy skills/agents (all, or only NAMEs) into a project
 # Anything already at a target path is moved to ~/.ai-room-backups/<timestamp>/, never deleted.
 set -euo pipefail
@@ -18,13 +18,14 @@ backup() { # move an existing target out of the way
 link() { mkdir -p "$(dirname "$2")"; backup "$2"; ln -s "$1" "$2"; echo "  link $2"; }
 copy() { mkdir -p "$(dirname "$2")"; backup "$2"; cp -R "$1" "$2"; echo "  copy $2"; }
 
-all_names() { ls "$ROOT/skills"; ls "$ROOT/agents"; }
+all_names() { for d in "$ROOT"/skills/*/ "$ROOT"/agents/*/; do basename "$d"; done; } # dirs only; skills/README.md is not a skill
 
 install_global() {
   for s in "$ROOT"/skills/*/; do
     n="$(basename "$s")"
     link "$ROOT/skills/$n" "$HOME/.claude/skills/$n"
-    link "$ROOT/skills/$n" "$HOME/.codex/skills/$n"
+    link "$ROOT/skills/$n" "$HOME/.agents/skills/$n" # where Codex reads user skills
+    if [ -L "$HOME/.codex/skills/$n" ]; then rm "$HOME/.codex/skills/$n"; echo "  removed old link ~/.codex/skills/$n"; fi
   done
   for a in "$ROOT"/agents/*/; do
     n="$(basename "$a")"
@@ -43,6 +44,7 @@ install_project() {
   dir="$1"; shift
   [ -d "$dir" ] || { echo "No such directory: $dir" >&2; exit 1; }
   dir="$(cd "$dir" && pwd)"
+  # shellcheck disable=SC2207  # names have no spaces; mapfile needs bash 4, macOS ships 3.2
   names=("$@"); [ ${#names[@]} -gt 0 ] || names=($(all_names))
   for n in "${names[@]}"; do
     if [ -d "$ROOT/skills/$n" ]; then
