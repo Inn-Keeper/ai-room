@@ -1,0 +1,4 @@
+interface:
+  display_name: "A11y"
+  short_description: "Accessibility audit against WCAG 2.2 AA"
+  default_prompt: "Use $a11y to audit this site or codebase for accessibility issues, citing a success criterion and a file or URL for every finding."
