@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Briefing</title>
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #ffffff; --raised: #f3ede4; --line: #e2d9cc;
+    --text: #1c1917; --muted: #5f564c; --accent: #b45309; --accent-soft: #fdecc8; --on-accent: #1c1917;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0a09; --surface: #161412; --raised: #1e1b18; --line: #3d3530;
+      --text: #f5f0e8; --muted: #a89e93; --accent: #f59e0b; --accent-soft: #3a2a0c; --on-accent: #f5f0e8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 60rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: .25rem 0 .5rem; }
+  h2 { font-size: 1.25rem; margin: 0 0 .25rem; }
+  p { margin: 0 0 .75rem; }
+  code { font: .875em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--raised); padding: .1em .35em; border-radius: 4px; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .lede { font-size: 1.125rem; max-width: 44rem; }
+  .meta, .hint, .note { color: var(--muted); font-size: .875rem; }
+  nav ol { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1.25rem 0 0; }
+  nav a { display: block; padding: .3rem .7rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-size: .875rem; }
+  section { margin-top: 2.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin-top: .75rem; }
+
+  .layer { display: grid; grid-template-columns: 8rem 1fr; gap: .75rem; align-items: start; }
+  .layer + .layer { margin-top: .5rem; padding-top: 1.5rem; position: relative; }
+  .layer + .layer::before { content: "\2193"; position: absolute; top: 0; left: 50%; color: var(--muted); }
+  .layer-name { color: var(--muted); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding-top: .6rem; }
+  .boxes { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .box { flex: 1 1 11rem; background: var(--raised); border: 1px solid var(--line); border-radius: 10px; padding: .6rem .75rem; }
+  .box.here { background: var(--accent-soft); border: 2px solid var(--accent); color: var(--on-accent); }
+  .box strong { display: block; }
+  .tag { display: inline-block; border: 1px solid currentColor; border-radius: 999px; padding: 0 .5rem; font-size: .75rem; font-weight: 600; white-space: nowrap; }
+  .tag.here, .tag.documented { color: var(--accent); }
+  .tag.inferred { color: var(--muted); border-style: dashed; }
+
+  ol.flow { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+  ol.flow li { counter-increment: step; position: relative; padding: 0 0 1.25rem 3rem; }
+  ol.flow li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); color: var(--bg); font-weight: 700; display: grid; place-items: center; }
+  ol.flow li:not(:last-child)::after { content: ""; position: absolute; left: calc(1rem - 1px); top: 2.25rem; bottom: .25rem; width: 2px; background: var(--line); }
+  ol.flow li:last-child { padding-bottom: 0; }
+
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; vertical-align: top; padding: .6rem .75rem; border-top: 1px solid var(--line); }
+  td code { white-space: nowrap; }
+  thead th { border-top: 0; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { padding: .6rem 0; border-top: 1px solid var(--line); }
+  ul.plain li:first-child { border-top: 0; padding-top: 0; }
+  ul.plain li:last-child { padding-bottom: 0; }
+  @media (max-width: 40rem) { .layer { grid-template-columns: 1fr; } .layer-name { padding-top: 0; } }
+</style>
+</head>
+<body>
+<main id="page">
+  <noscript><p>This briefing needs JavaScript to render. The content is in the JSON block inside this file.</p></noscript>
+</main>
+
+<!-- The skill replaces only the JSON below. Write "<\/" for any "</" inside it. -->
+<script type="application/json" id="briefing">
+{}
+</script>
+
+<script>
+(function () {
+  var page = document.getElementById("page"), d;
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function add(parent) { for (var i = 1; i < arguments.length; i++) if (arguments[i]) parent.appendChild(arguments[i]); return parent; }
+  function src(s) { return s ? el("code", "", s) : null; }
+  function has(a) { return Array.isArray(a) && a.length; }
+
+  try { d = JSON.parse(document.getElementById("briefing").textContent); }
+  catch (e) { add(page, el("p", "", "The briefing data is not valid JSON: " + e.message)); return; }
+  if (!d.scope) { add(page, el("p", "", "No briefing data yet. This is the empty template.")); return; }
+
+  document.title = d.scope + " briefing";
+  var sections = [], nav = el("ol");
+  function section(id, title, hint, body) {
+    var s = el("section"); s.id = id;
+    add(s, el("h2", "", title), hint && el("p", "hint", hint), add(el("div", "card"), body));
+    sections.push(s);
+    var a = el("a", "", title); a.href = "#" + id; add(nav, add(el("li"), a));
+  }
+  function table(head, rows) {
+    var t = el("table"), hr = el("tr");
+    head.forEach(function (h) { var th = el("th", "", h); th.scope = "col"; hr.appendChild(th); });
+    add(t, add(el("thead"), hr));
+    var tb = el("tbody");
+    rows.forEach(function (cells) { var tr = el("tr"); cells.forEach(function (c) { var td = el("td"); if (c && c.nodeType) td.appendChild(c); else td.textContent = c || ""; tr.appendChild(td); }); tb.appendChild(tr); });
+    return add(el("div", "scroll"), add(t, tb));
+  }
+  function list(items, render) { var ul = el("ul", "plain"); items.forEach(function (i) { ul.appendChild(render(i)); }); return ul; }
+
+  if (has(d.map)) {
+    var map = el("div");
+    d.map.forEach(function (layer) {
+      var boxes = el("div", "boxes");
+      (layer.boxes || []).forEach(function (b) {
+        var box = el("div", "box" + (b.inScope ? " here" : ""));
+        add(box, el("strong", "", b.name), b.inScope && el("span", "tag here", "This scope"), b.note && el("div", "", b.note),
+          has(b.talksTo) && el("div", "note", "Talks to: " + b.talksTo.join(", ")));
+        boxes.appendChild(box);
+      });
+      add(map, add(el("div", "layer"), el("div", "layer-name", layer.layer), boxes));
+    });
+    section("map", "Where this sits", "The whole system at a glance. Only the highlighted part is covered below.", map);
+  }
+  if (has(d.flow)) {
+    var ol = el("ol", "flow");
+    d.flow.forEach(function (f) { add(ol, add(el("li"), el("strong", "", f.step), f.detail && el("div", "", f.detail), src(f.source))); });
+    section("flow", "What it does", d.flowTitle || "The main path, start to finish.", ol);
+  }
+  if (has(d.rules)) {
+    section("rules", "Rules and constraints", "Documented: stated in docs, comments, or tests. Inferred: read from the code's behavior, so confirm before relying on it.",
+      table(["Rule", "Type", "Basis", "Source"], d.rules.map(function (r) {
+        var basis = r.basis === "documented" ? "documented" : "inferred";
+        return [r.rule, r.kind || "rule", el("span", "tag " + basis, basis), src(r.source)];
+      })));
+  }
+  if (has(d.data)) {
+    section("data", "Data it touches", null, table(["Name", "Kind", "Access", "Notes"], d.data.map(function (x) { return [el("strong", "", x.name), x.kind, x.access, x.note]; })));
+  }
+  if (has(d.start)) {
+    section("start", "Where to start", "Read these in order.", list(d.start, function (s) { return add(el("li"), src(s.path), document.createTextNode(" "), s.kind && el("span", "tag", s.kind), el("div", "", s.why)); }));
+  }
+  if (has(d.traps)) {
+    section("traps", "Before you change it", null, list(d.traps, function (t) { return add(el("li"), el("div", "", t.trap), src(t.source)); }));
+  }
+  if (has(d.questions)) {
+    section("questions", "Ask when they're back", "What the code and docs do not answer.", list(d.questions, function (q) { return el("li", "", q); }));
+  }
+  if (has(d.notCovered)) {
+    section("not-covered", "Not covered", "Left out to keep this short.", list(d.notCovered, function (q) { return el("li", "", q); }));
+  }
+
+  var header = el("header");
+  add(header, el("div", "eyebrow", (d.project ? d.project + " · " : "") + "Briefing"), el("h1", "", d.scope), d.summary && el("p", "lede", d.summary),
+    el("p", "meta", ["Generated " + (d.date || "on an unknown date"), d.commit && "at commit " + d.commit, "from the code as it was then; check the source before relying on a detail."].filter(Boolean).join(" ")));
+  var n = el("nav"); n.setAttribute("aria-label", "Sections");
+  add(page, add(header, add(n, nav)));
+  sections.forEach(function (s) { page.appendChild(s); });
+  var target = location.hash && document.getElementById(location.hash.slice(1));
+  if (target) target.scrollIntoView(); // sections did not exist when the browser first looked for the anchor
+})();
+</script>
+</body>
+</html>

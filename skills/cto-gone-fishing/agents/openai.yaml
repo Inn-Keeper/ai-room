@@ -1,0 +1,4 @@
+interface:
+  display_name: "CTO Gone Fishing"
+  short_description: "One-page visual briefing on a module or feature"
+  default_prompt: "Use $cto-gone-fishing to brief me on this module or feature: where it sits, how it works, its rules, and where to start."

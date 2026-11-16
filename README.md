@@ -131,7 +131,8 @@ Swap `x-ray` for any skill in the table below. Or copy and paste by hand: open
 `skills/<name>/SKILL.md` on GitHub, click **Raw**, and save it as
 `.claude/skills/<name>/SKILL.md` (Codex: `.agents/skills/<name>/SKILL.md`).
 The skill works from `SKILL.md` alone; `agents/openai.yaml` only adds a display
-name and default prompt in the Codex app.
+name and default prompt in the Codex app. The exception is `cto-gone-fishing`,
+which also needs its `template.html` in the same folder.
 
 Agents work the same way, one file per tool:
 
@@ -151,6 +152,7 @@ curl -fsSL --create-dirs -o .codex/agents/real-user.toml \
 |---|---|
 | `there-we-go` | Ticket to analysis to agreed plan to scoped implementation to verification |
 | `architect` | Design a new system or a large feature before coding: options, recommendation, roadmap |
+| `cto-gone-fishing` | One-page visual briefing on a module or feature: where it sits, main flow, business rules with sources, where to start |
 | `x-ray` | Correctness-focused code review of a diff or PR |
 | `scrutinize` | Code quality review: structure, complexity, coupling, testability |
 | `get-styled` | CSS architecture, responsive, and cross-browser audit |
