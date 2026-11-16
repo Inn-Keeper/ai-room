@@ -195,12 +195,22 @@ it is the `playwright` MCP server in `codex/config.toml`, which is the official
 `@playwright/mcp` with a pinned version, runs locally over stdio, and uses an
 isolated browser profile.
 
-`product-manager` reads `docs/`, where superpowers writes its specs and plans. With
-no docs it says so and points you to brainstorming instead of inventing requirements.
+`product-manager` reads `docs/`, where superpowers writes its specs and plans. On Claude
+it has no shell or edit tools, so it cannot change files. Codex has no per-agent
+sandbox, so there its read-only behavior rests on its instructions and on the
+sandbox of the session that calls it.
+
+With no docs it says so and points you to brainstorming instead of inventing requirements.
 
 ## Third-party plugins and tools
 
-These are installed from their sources, not vendored here:
+These are installed from their sources, not vendored here. None of them is pinned
+to a version, so enabling one means trusting whatever that project ships next.
+That matters most for the two wired into `claude/settings.json`: `rtk` runs before
+every shell command, and `ponytail` is a plugin from a personal GitHub repository.
+Read their code before merging those settings, and leave out any you don't want.
+
+The list:
 
 | Name | Tool | Install |
 |---|---|---|
