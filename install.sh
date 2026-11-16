@@ -44,8 +44,10 @@ install_project() {
   dir="$1"; shift
   [ -d "$dir" ] || { echo "No such directory: $dir" >&2; exit 1; }
   dir="$(cd "$dir" && pwd)"
-  # shellcheck disable=SC2207  # names have no spaces; mapfile needs bash 4, macOS ships 3.2
-  names=("$@"); [ ${#names[@]} -gt 0 ] || names=($(all_names))
+  names=("$@")
+  # names have no spaces; mapfile needs bash 4 and macOS ships 3.2
+  # shellcheck disable=SC2207
+  [ ${#names[@]} -gt 0 ] || names=($(all_names))
   for n in "${names[@]}"; do
     if [ -d "$ROOT/skills/$n" ]; then
       copy "$ROOT/skills/$n" "$dir/.claude/skills/$n"
