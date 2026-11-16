@@ -10,7 +10,7 @@
 ## My preferences
 <!-- Fill these in as they come up — Claude: if a session reveals a stable preference, suggest adding it here. -->
 - Commit messages: short imperative subject (e.g. "Add speed challenge"), no type prefix. Each feature or small task gets its own commit, not one blast commit with everything.
-- Authorship: commits and PRs attributed only to my GitHub user (InnKeeper). No Claude/Anthropic attribution anywhere — no `Co-Authored-By` trailer, no "Generated with Claude Code" footer.
+- Authorship: commits and PRs attributed only to the repository's git user. No Claude/Anthropic attribution anywhere — no `Co-Authored-By` trailer, no "Generated with Claude Code" footer.
 
 ## Security
 - Never expose secrets in the chats and sessions.
