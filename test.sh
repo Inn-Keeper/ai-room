@@ -34,7 +34,7 @@ assert block.sub(r"\1{}\n\2", demo) == open("skills/cto-gone-fishing/template.ht
 EOF
 
 # per-project install: real copies
-./install.sh --project "$tmp" >/dev/null
+"$BASH" ./install.sh --project "$tmp" >/dev/null
 for s in skills/*/; do
   n="$(basename "$s")"
   [ -f "$tmp/.claude/skills/$n/SKILL.md" ] && [ -f "$tmp/.agents/skills/$n/SKILL.md" ] || fail "project install: skill $n"
@@ -43,11 +43,11 @@ for a in agents/*/; do
   n="$(basename "$a")"
   [ -f "$tmp/.claude/agents/$n.md" ] && [ -f "$tmp/.codex/agents/$n.toml" ] || fail "project install: agent $n"
 done
-if ./install.sh --project "$tmp" no-such-name >/dev/null 2>&1; then fail "unknown name was accepted"; fi
+if "$BASH" ./install.sh --project "$tmp" no-such-name >/dev/null 2>&1; then fail "unknown name was accepted"; fi
 
 # machine-wide install into a fake home: symlinks, and an existing file is backed up
 mkdir -p "$tmp/home/.claude"; echo mine > "$tmp/home/.claude/CLAUDE.md"
-HOME="$tmp/home" ./install.sh >/dev/null
+HOME="$tmp/home" "$BASH" ./install.sh >/dev/null
 for s in skills/*/; do
   n="$(basename "$s")"
   [ -L "$tmp/home/.claude/skills/$n" ] && [ -L "$tmp/home/.agents/skills/$n" ] || fail "global install: skill $n"

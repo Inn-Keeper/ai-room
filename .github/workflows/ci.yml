@@ -10,8 +10,17 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - run: shellcheck install.sh test.sh
-      - run: ./test.sh
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - if: runner.os == 'Linux'
+        run: shellcheck install.sh test.sh
+      # /bin/bash is 3.2 on macOS, the oldest shell the installer supports
+      - run: /bin/bash test.sh
