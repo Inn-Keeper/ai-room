@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" fill="none">
+  <rect width="1280" height="640" fill="#0B0A09"/>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <g transform="translate(140 176) scale(4.5)">
+    <rect width="64" height="64" rx="14" fill="#161412" stroke="#3D3530" stroke-width="0.6"/>
+    <rect width="64" height="64" rx="14" fill="url(#g)" opacity="0.35"/>
+    <path d="M22 56h20l6-6H16l6 6z" fill="#F59E0B" opacity="0.22"/>
+    <path d="M19 50V27a13 13 0 0 1 26 0v23H19z" fill="#1E1B18" stroke="#3D3530" stroke-width="1.6"/>
+    <path d="M23 50V27a9 9 0 0 1 18 0v23H23z" fill="#F59E0B"/>
+    <path d="M23 50V24.5L33 29v18.5L23 50z" fill="#EA580C"/>
+    <circle cx="30.4" cy="39" r="1.1" fill="#0B0A09"/>
+    <path d="M12 50h40" stroke="#3D3530" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="49" cy="15" r="3.2" fill="#FBBF24" opacity="0.9"/>
+    <circle cx="49" cy="15" r="6" fill="#F59E0B" opacity="0.25"/>
+  </g>
+  <text x="500" y="318" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="112" font-weight="700" fill="#F5F0E8">ai-room</text>
+  <text x="504" y="384" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" fill="#9C9288">Skills, agents, and instructions</text>
+  <text x="504" y="430" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" fill="#9C9288">for Claude Code and Codex</text>
+  <rect x="504" y="462" width="72" height="5" rx="2.5" fill="#F59E0B"/>
+  <defs>
+    <radialGradient id="bg" cx="284" cy="420" r="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EA580C" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#EA580C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g" cx="32" cy="48" r="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EA580C" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#EA580C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
