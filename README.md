@@ -56,6 +56,8 @@ skills/      one folder per skill: SKILL.md (Claude and Codex) + agents/openai.y
 agents/      custom subagents, each as <name>.md (Claude) and <name>.toml (Codex)
 claude/      global CLAUDE.md, RTK.md, and a portable settings.json (hooks + plugins)
 codex/       global AGENTS.md, RTK.md, and a portable config.toml (plugins + Playwright MCP)
+docs/        example output: a cto-gone-fishing briefing of the installer
+assets/      logo and README images
 install.sh   puts the above where each tool looks for it
 test.sh      checks every skill and agent and both install modes; CI runs it
 ```
