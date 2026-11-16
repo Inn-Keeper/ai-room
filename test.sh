@@ -24,6 +24,15 @@ EOF
   grep -qF "\`$n\`" README.md || fail "$n: not listed in README.md"
 done
 
+# the demo briefing must be the current template with only its data block filled in
+python3 - <<'EOF' || fail "docs/briefings/installer.html is out of date: copy skills/cto-gone-fishing/template.html over it and put its JSON block back"
+import json, re
+block = re.compile(r'(<script type="application/json" id="briefing">\n).*?(</script>)', re.S)
+demo = open("docs/briefings/installer.html").read()
+json.loads(block.search(demo).group(0).split("\n", 1)[1].rsplit("</script>", 1)[0])
+assert block.sub(r"\1{}\n\2", demo) == open("skills/cto-gone-fishing/template.html").read()
+EOF
+
 # per-project install: real copies
 ./install.sh --project "$tmp" >/dev/null
 for s in skills/*/; do

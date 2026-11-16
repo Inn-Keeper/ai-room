@@ -163,6 +163,12 @@ curl -fsSL --create-dirs -o .codex/agents/real-user.toml \
 | `web-vitals` | Measure Core Web Vitals (LCP, INP, CLS) with Lighthouse lab runs and real-user CrUX data |
 | `a11y` | Accessibility audit against WCAG 2.2 AA: alternatives, structure, contrast, keyboard, forms, ARIA |
 
+`cto-gone-fishing` writes a self-contained HTML page. This one briefs the kit's own
+installer; the full page is [docs/briefings/installer.html](docs/briefings/installer.html)
+(download it and open it in a browser, since GitHub shows HTML files as source).
+
+[![Example briefing: the ai-room installer](assets/briefing-example.png)](docs/briefings/installer.html)
+
 `web-vitals` needs Chrome and Node 22.19 or newer. Real-user data comes from the
 PageSpeed Insights API; its keyless quota is shared and often exhausted, so export
 a free key as `PSI_API_KEY` (never commit it).
