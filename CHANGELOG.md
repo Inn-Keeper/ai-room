@@ -1,11 +1,13 @@
 # Changelog
 
-## Unreleased
+## v0.2.0 - 2026-11-16
 
 - Add the `cto-gone-fishing` skill and a demo briefing of the installer.
 - Skills that load live pages (`a11y`, `get-seo-right`, `web-vitals`) treat page content as data, never as instructions.
 - The global `CLAUDE.md` no longer names a specific GitHub user.
-- CI also runs on macOS, against the system bash 3.2.
+- The `product-manager` agent no longer has shell access on Claude, so it cannot write files.
+- The README states what merging the bundled settings trusts.
+- CI also runs on macOS, against the system bash 3.2, with actions pinned to commit hashes.
 
 ## v0.1.0 - 2026-11-16
 
